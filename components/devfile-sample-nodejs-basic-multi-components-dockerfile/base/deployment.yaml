@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-nodejs-basic-multi-components-dockerfile
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-nodejs-basic-multi-components-dockerfile
+    app.kubernetes.io/part-of: multi-components-dockerfile
+  name: devfile-sample-nodejs-basic-multi-components-dockerfile
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: nodejs-app
+      app.kubernetes.io/instance: devfile-sample-nodejs-basic-multi-components-dockerfile
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nodejs-app
+        app.kubernetes.io/instance: devfile-sample-nodejs-basic-multi-components-dockerfile
+    spec:
+      containers:
+      - image: nodejs-image:latest
+        name: my-nodejs
+        ports:
+        - containerPort: 3001
+          name: http
+          protocol: TCP
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}

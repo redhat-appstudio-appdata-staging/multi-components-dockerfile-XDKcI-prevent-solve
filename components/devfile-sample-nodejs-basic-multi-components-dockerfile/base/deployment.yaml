@@ -10,7 +10,7 @@ metadata:
     app.kubernetes.io/part-of: multi-components-dockerfile
   name: devfile-sample-nodejs-basic-multi-components-dockerfile
 spec:
-  replicas: 1
+  replicas: 0
   revisionHistoryLimit: 0
   selector:
     matchLabels:
